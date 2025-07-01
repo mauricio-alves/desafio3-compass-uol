@@ -1,7 +1,8 @@
-import { Injectable, NotFoundException  } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Category } from "./category.entity";
+import { CategoryDto } from "./dto/category.dto";
 
 @Injectable()
 export class CategoryService {
@@ -10,11 +11,20 @@ export class CategoryService {
     private categoryRepository: Repository<Category>
   ) {}
 
-  async findAll(): Promise<Category[]> {
-    return await this.categoryRepository.find({ relations: ["products"] });
+  private toDto(category: Category): CategoryDto {
+    return {
+      id: category.id,
+      name: category.name,
+      products: category.products?.map((p) => ({ id: p.id, title: p.title })) || [],
+    };
   }
 
-  async findOne(id: number): Promise<Category> {
+  async findAll(): Promise<CategoryDto[]> {
+    const categories = await this.categoryRepository.find({ relations: ["products"] });
+    return categories.map((category) => this.toDto(category));
+  }
+
+  async findOne(id: number): Promise<CategoryDto> {
     const category = await this.categoryRepository.findOne({
       where: { id },
       relations: ["products"],
@@ -24,6 +34,6 @@ export class CategoryService {
       throw new NotFoundException(`Categoria com ID ${id} não encontrada.`);
     }
 
-    return category;
+    return this.toDto(category);
   }
 }
