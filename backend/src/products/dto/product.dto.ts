@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 import { CategoryDto } from "../../categories/dto/category.dto";
 
 export class ProductDto {

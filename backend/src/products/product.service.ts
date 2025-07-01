@@ -31,7 +31,7 @@ export class ProductService {
 
   async findAll(): Promise<ProductDto[]> {
     const products = await this.productRepository.find({ relations: ["category"] });
-    return products.map(this.toDto);
+    return products.map((product) => this.toDto(product));
   }
 
   async findByCategory(categoryId: number): Promise<ProductDto[]> {
@@ -39,7 +39,7 @@ export class ProductService {
       where: { category: { id: categoryId } },
       relations: ["category"],
     });
-    return products.map(this.toDto);
+    return products.map((p) => this.toDto(p));
   }
 
   async findOne(id: number): Promise<ProductDto> {
