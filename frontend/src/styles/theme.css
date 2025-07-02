@@ -1,0 +1,17 @@
+:root {
+  /* Font Family */
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Colors */
+  --color-black: #121212;
+  --color-white: #ffffff;
+  --color-orange-light: #fff3e3;
+
+  /* Font Sizes */
+  --font-size-heading-1: 40px;
+  --font-size-heading-2: 34px;
+  --font-size-large: 20px;
+  --font-size-medium: 18px;
+  --font-size-normal: 16px;
+  --font-size-small: 14px;
+}

@@ -1,0 +1,37 @@
+@layer utilities {
+  /* Font Family */
+  .font-poppins {
+    font-family: var(--font-poppins);
+  }
+
+  /* Font Sizes */
+  .text-heading-1 {
+    font-size: var(--font-size-heading-1);
+  }
+  .text-heading-2 {
+    font-size: var(--font-size-heading-2);
+  }
+  .text-large {
+    font-size: var(--font-size-large);
+  }
+  .text-medium {
+    font-size: var(--font-size-medium);
+  }
+  .text-normal {
+    font-size: var(--font-size-normal);
+  }
+  .text-small {
+    font-size: var(--font-size-small);
+  }
+
+  /* Colors */
+  .color-black {
+    color: var(--color-black);
+  }
+  .color-white {
+    color: var(--color-white);
+  }
+  .color-orange-light {
+    color: var(--color-orange-light);
+  }
+}
