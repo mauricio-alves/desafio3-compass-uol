@@ -7,6 +7,9 @@ export class CategoryDto {
   @ApiProperty({ example: "Eletrônicos", description: "Nome da categoria" })
   name: string;
 
+  @ApiPropertyOptional({ example: "https://...", description: "URL da imagem da categoria" })
+  image: string;
+
   @ApiPropertyOptional({
     description: "Lista de produtos desta categoria",
     type: () => [ProductSummaryDto],
