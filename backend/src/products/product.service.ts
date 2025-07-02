@@ -26,11 +26,28 @@ export class ProductService {
         id: product.category.id,
         name: product.category.name,
       },
+      categoryId: product.category.id,
+      discount: product.discount,
+      isNew: product.isNew,
     };
   }
 
-  async findAll(): Promise<ProductDto[]> {
-    const products = await this.productRepository.find({ relations: ["category"] });
+  async findAll(filters: { categoryId?: number; discount?: boolean; isNew?: boolean }): Promise<ProductDto[]> {
+    const query = this.productRepository.createQueryBuilder("product").leftJoinAndSelect("product.category", "category");
+
+    if (filters.categoryId) {
+      query.andWhere("product.categoryId = :categoryId", { categoryId: filters.categoryId });
+    }
+
+    if (typeof filters.discount !== "undefined") {
+      query.andWhere("product.discount = :discount", { discount: filters.discount });
+    }
+
+    if (typeof filters.isNew !== "undefined") {
+      query.andWhere("product.isNew = :isNew", { isNew: filters.isNew });
+    }
+
+    const products = await query.getMany();
     return products.map((product) => this.toDto(product));
   }
 

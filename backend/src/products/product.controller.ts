@@ -1,5 +1,5 @@
-import { Controller, Get, Param } from "@nestjs/common";
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from "@nestjs/swagger";
+import { Controller, Get, Param, Query } from "@nestjs/common";
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiQuery } from "@nestjs/swagger";
 import { ProductService } from "./product.service";
 import { ProductDto } from "./dto/product.dto";
 
@@ -9,10 +9,13 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  @ApiOperation({ summary: "Retorna todos os produtos" })
+  @ApiOperation({ summary: "Retorna todos os produtos com filtros opcionais" })
+  @ApiQuery({ name: "categoryId", required: false, type: Number, description: "ID da categoria" })
+  @ApiQuery({ name: "discount", required: false, type: Boolean, description: "Filtrar produtos com desconto" })
+  @ApiQuery({ name: "isNew", required: false, type: Boolean, description: "Filtrar produtos novos" })
   @ApiResponse({ status: 200, description: "Lista de produtos", type: [ProductDto] })
-  findAll(): Promise<ProductDto[]> {
-    return this.productService.findAll();
+  findAll(@Query("categoryId") categoryId?: number, @Query("discount") discount?: boolean, @Query("isNew") isNew?: boolean): Promise<ProductDto[]> {
+    return this.productService.findAll({ categoryId, discount, isNew });
   }
 
   @Get("category/:id")

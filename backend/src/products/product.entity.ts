@@ -30,6 +30,15 @@ export class Product {
   @Column("simple-array")
   colors: string[];
 
-  @ManyToOne(() => Category, (category) => category.products)
+  @Column({ default: false })
+  discount: boolean;
+
+  @Column({ type: "float", nullable: true })
+  discountPercent?: number;
+
+  @Column({ default: false })
+  isNew: boolean;
+
+  @ManyToOne(() => Category, (category) => category.products, { eager: true })
   category: Category;
 }

@@ -43,4 +43,13 @@ export class ProductDto {
 
   @ApiProperty({ type: CategoryDto })
   category: CategoryDto;
+
+  @ApiProperty({ example: 1, description: "ID da categoria" })
+  categoryId: number;
+
+  @ApiProperty({ example: true, description: "Indica se o produto está com desconto" })
+  discount: boolean;
+
+  @ApiProperty({ example: true, description: "Indica se o produto é novo" })
+  isNew: boolean;
 }
