@@ -1,17 +1,18 @@
 import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 import { ProductCard } from "../ProductCard";
+import { InitialCountProps } from "@/interfaces/initialCountProps";
 
-export function Products() {
-  const [visibleCount, setVisibleCount] = useState(8);
+export function Products({ initialCount = 8 }: InitialCountProps) {
+  const [visibleCount, setVisibleCount] = useState(initialCount);
   const { products, loading, error } = useProducts();
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => prev + 8);
+    setVisibleCount((prev) => prev + initialCount);
   };
 
   const handleShowLess = () => {
-    setVisibleCount((prev) => Math.max(8, prev - 8));
+    setVisibleCount((prev) => Math.max(initialCount, prev - initialCount));
   };
 
   const visibleProducts = products.slice(0, visibleCount);
@@ -35,14 +36,14 @@ export function Products() {
         ))}
       </div>
       <div className="flex justify-center mt-10 gap-6">
-        {visibleCount < products.length && (
-          <button onClick={handleShowMore} className="border border-[var(--color-yellow)] text-[var(--color-yellow)] py-3 px-20 rounded hover:bg-[var(--color-yellow)] hover:text-white transition cursor-pointer font-poppins">
-            Show More
-          </button>
-        )}
         {visibleCount > 8 && (
           <button onClick={handleShowLess} className="border border-[var(--color-yellow)] text-[var(--color-yellow)] py-3 px-20 rounded hover:bg-[var(--color-yellow)] hover:text-white transition cursor-pointer font-poppins">
             Show Less
+          </button>
+        )}
+        {visibleCount < products.length && (
+          <button onClick={handleShowMore} className="border border-[var(--color-yellow)] text-[var(--color-yellow)] py-3 px-20 rounded hover:bg-[var(--color-yellow)] hover:text-white transition cursor-pointer font-poppins">
+            Show More
           </button>
         )}
       </div>
