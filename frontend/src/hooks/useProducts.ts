@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { api } from "@/services/api";
-import { Product } from "@/interfaces/Product";
+import { ProductProps } from "@/interfaces/ProductProps";
 
 export function useProducts() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -13,11 +14,13 @@ export function useProducts() {
         setProducts(res.data);
       } catch {
         setError("Erro ao carregar categorias");
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchProducts();
   }, []);
 
-  return { products, error };
+  return { products, loading, error };
 }

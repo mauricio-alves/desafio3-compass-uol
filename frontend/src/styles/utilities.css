@@ -40,4 +40,16 @@
   .color-orange-light {
     color: var(--color-orange-light);
   }
+  .color-yellow {
+    color: var(--color-yellow);
+  }
+  .color-gray {
+    color: var(--color-gray);
+  }
+  .color-red {
+    color: var(--color-red);
+  }
+  .color-green {
+    color: var(--color-green);
+  }
 }
