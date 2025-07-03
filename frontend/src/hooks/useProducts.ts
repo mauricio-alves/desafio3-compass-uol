@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { api } from "@/services/api";
-import { ProductProps } from "@/interfaces/ProductProps";
+import { Product } from "@/interfaces/Product";
 
 export function useProducts() {
-  const [products, setProducts] = useState<ProductProps[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

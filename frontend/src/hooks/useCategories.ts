@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { api } from "@/services/api";
-import { CategoryProps } from "@/interfaces/CategoryProps";
+import { Category } from "@/interfaces/Category";
 
 export function useCategories() {
-  const [categories, setCategories] = useState<CategoryProps[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

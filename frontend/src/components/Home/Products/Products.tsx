@@ -1,7 +1,7 @@
 import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 import { ProductCard } from "../ProductCard";
-import { InitialCountProps } from "@/interfaces/initialCountProps";
+import { InitialCountProps } from "@/interfaces/InitialCountProps_";
 
 export function Products({ initialCount = 8 }: InitialCountProps) {
   const [visibleCount, setVisibleCount] = useState(initialCount);
@@ -35,7 +35,7 @@ export function Products({ initialCount = 8 }: InitialCountProps) {
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
-      <div className="flex justify-center mt-10 gap-6">
+      <div className="flex justify-center mt-8 gap-6">
         {visibleCount > 8 && (
           <button onClick={handleShowLess} className="border border-[var(--color-yellow)] text-[var(--color-yellow)] py-3 px-20 rounded hover:bg-[var(--color-yellow)] hover:text-white transition cursor-pointer font-poppins">
             Show Less
