@@ -25,6 +25,7 @@ export class ProductService {
       category: {
         id: product.category.id,
         name: product.category.name,
+        image: product.category.image,
       },
       categoryId: product.category.id,
       discount: product.discount,

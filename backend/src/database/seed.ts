@@ -22,9 +22,9 @@ const imagesByCategory = {
   dining: ["https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"],
 };
 
-async function createCategory(name: string) {
+async function createCategory(name: string, image: string) {
   const categoryRepo = AppDataSource.getRepository(Category);
-  const category = categoryRepo.create({ name });
+  const category = categoryRepo.create({ name, image });
   return categoryRepo.save(category);
 }
 
@@ -74,17 +74,20 @@ async function seed() {
   try {
     await AppDataSource.initialize();
 
-    const categories = ["Dining", "Living", "Bedroom"];
+    const categories = ["Dining", "Living", "Bedroom"] as const;
 
     for (const name of categories) {
-      const category = await createCategory(name);
+      const key = name.toLowerCase() as keyof typeof imagesByCategory;
+      const categoryImage = imagesByCategory[key][0];
+
+      const category = await createCategory(name, categoryImage);
 
       for (let i = 1; i <= 15; i++) {
         await createProduct(category, name, i);
       }
     }
 
-    console.log("✅ Seed completo com 3 categorias e 45 produtos!");
+    console.log("Seed completo com 3 categorias e 45 produtos!");
   } catch (err) {
     console.error("Erro no seed:", err);
   } finally {
