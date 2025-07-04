@@ -29,6 +29,7 @@ export class ProductService {
       },
       categoryId: product.category.id,
       discount: product.discount,
+      discountPercent: product.discountPercent,
       isNew: product.isNew,
     };
   }
