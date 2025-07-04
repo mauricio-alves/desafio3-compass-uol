@@ -13,7 +13,7 @@ export function useProducts() {
         const res = await api.get("/products");
         setProducts(res.data);
       } catch {
-        setError("Erro ao carregar categorias");
+        setError("Erro ao carregar produtos.");
       } finally {
         setLoading(false);
       }

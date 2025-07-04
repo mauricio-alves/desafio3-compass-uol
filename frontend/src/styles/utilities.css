@@ -46,6 +46,9 @@
   .color-gray {
     color: var(--color-gray);
   }
+  .color-dark-gray {
+    color: var(--color-dark-gray);
+  }
   .color-red {
     color: var(--color-red);
   }

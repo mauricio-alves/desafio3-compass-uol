@@ -13,7 +13,7 @@ export function useCategories() {
         const res = await api.get("/categories");
         setCategories(res.data);
       } catch {
-        setError("Erro ao carregar categorias");
+        setError("Erro ao carregar categorias.");
       } finally {
         setLoading(false);
       }
