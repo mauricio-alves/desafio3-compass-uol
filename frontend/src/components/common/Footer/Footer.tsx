@@ -41,10 +41,10 @@ export function Footer() {
 
   return (
     <footer className="bg-[var(--color-white)] border-t border-gray-200 py-12 text-gray-600 font-poppins flex flex-col items-center">
-      <div className="grid grid-cols-3 gap-17 -ml-10">
+      <div className="grid grid-cols-3 gap-18 -ml-10">
         <div>
           <h2 className="text-2xl font-bold text-black mb-4">Funiro.</h2>
-          <p className="leading-relaxed text-normal mt-13 text-[var(--color-dark-gray)]">
+          <p className="leading-relaxed text-normal mt-12 text-[var(--color-dark-gray)]">
             400 University Drive Suite 200 Coral <br /> Gables,
           </p>
           <p className=" text-normal text-[var(--color-dark-gray)">FL 33134 USA</p>
@@ -53,7 +53,7 @@ export function Footer() {
           {linkGroups.map(({ title, links }) => (
             <div key={title}>
               <h3 className="text-text-[var(--color-dark-gray) mb-4 text-normal">{title}</h3>
-              <ul className="space-y-2 flex flex-col gap-10 mt-13">
+              <ul className="space-y-2 flex flex-col gap-10 mt-12">
                 {links.map(({ label, href }) => (
                   <li key={label}>
                     <a href={href} className="text-black hover:underline text-normal">

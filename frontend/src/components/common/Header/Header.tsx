@@ -21,7 +21,7 @@ export function Header() {
             <span className="text-heading-2 font-bold text-black font-montserrat">Furniro</span>
           </Link>
         </div>
-        <nav className="flex gap-19 text-black text-normal font-poppins ml-26">
+        <nav className="flex gap-18 text-black text-normal font-poppins ml-26">
           {["Home", "Shop", "About", "Contact"].map((label) => (
             <a key={label} href="#" className="relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:after:left-0">
               {label}
