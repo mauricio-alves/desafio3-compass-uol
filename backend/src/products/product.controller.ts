@@ -19,9 +19,9 @@ export class ProductController {
   async findAll(@Query("categoryId") categoryId?: number, @Query("discount") discount?: boolean, @Query("isNew") isNew?: boolean): Promise<ProductPreviewDto[]> {
     const products = await this.productService.findAll({ categoryId, discount, isNew });
 
-    return products.map(({ id, title, images, description, price, discount: hasDiscount, discountPercent, isNew: isProductNew }) => ({
+    return products.map(({ id, name, images, description, price, discount: hasDiscount, discountPercent, isNew: isProductNew }) => ({
       id,
-      title,
+      name,
       images,
       description,
       price,
@@ -42,9 +42,9 @@ export class ProductController {
   async findByCategory(@Param("id") categoryId: number): Promise<ProductPreviewDto[]> {
     const products = await this.productService.findByCategory(categoryId);
 
-    return products.map(({ id, title, images, description, price, discount: hasDiscount, discountPercent, isNew: isProductNew }) => ({
+    return products.map(({ id, name, images, description, price, discount: hasDiscount, discountPercent, isNew: isProductNew }) => ({
       id,
-      title,
+      name,
       images,
       description,
       price,

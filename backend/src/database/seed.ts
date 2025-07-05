@@ -55,7 +55,7 @@ async function createProduct(category: Category, name: string, index: number) {
   const { titles, descriptions } = titlesAndDescriptionsByCategory[categoryKey];
 
   const product = productRepo.create({
-    title: getRandomFromArray(titles),
+    name: getRandomFromArray(titles),
     description: getRandomFromArray(descriptions),
     price: parseFloat((Math.random() * 1000 + 100).toFixed(2)),
     images,

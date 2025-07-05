@@ -6,7 +6,7 @@ export class ProductPreviewDto {
   id: number;
 
   @ApiProperty({ example: "Camiseta Legal", description: "Título do produto" })
-  title: string;
+  name: string;
 
   @ApiProperty({
     example: ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],

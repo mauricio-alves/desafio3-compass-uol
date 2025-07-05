@@ -6,7 +6,7 @@ export class ProductDto {
   id: number;
 
   @ApiProperty({ example: "Camiseta Legal", description: "Título do produto" })
-  title: string;
+  name: string;
 
   @ApiProperty({ example: 59.9, description: "Preço do produto" })
   price: number;

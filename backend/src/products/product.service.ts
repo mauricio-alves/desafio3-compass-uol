@@ -14,7 +14,7 @@ export class ProductService {
   private toDto(product: Product): ProductDto {
     return {
       id: product.id,
-      title: product.title,
+      name: product.name,
       price: Number(product.price),
       images: product.images,
       rating: product.rating,
