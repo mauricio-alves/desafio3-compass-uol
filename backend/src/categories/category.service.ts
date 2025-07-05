@@ -16,7 +16,7 @@ export class CategoryService {
       id: category.id,
       name: category.name,
       image: category.image,
-      products: category.products?.map((p) => ({ id: p.id, title: p.title })) || [],
+      products: category.products?.map((p) => ({ id: p.id, name: p.name })) || [],
     };
   }
 
