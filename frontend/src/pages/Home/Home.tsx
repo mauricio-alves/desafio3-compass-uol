@@ -8,7 +8,7 @@ export function Home() {
     <>
       <Banner />
       <Categories />
-      <Products initialCount={8} />
+      <Products title="Our Products" initialCount={8} />
       <Features />
     </>
   );

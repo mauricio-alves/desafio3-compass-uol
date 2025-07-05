@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "@/services/api";
 import { Product } from "@/interfaces/Product";
 
-export function useProducts() {
+export function useProducts(categoryId?: string) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -10,7 +10,8 @@ export function useProducts() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await api.get("/products");
+        const endpoint = categoryId ? `/products/category/${categoryId}` : "/products";
+        const res = await api.get(endpoint);
         setProducts(res.data);
       } catch {
         setError("Erro ao carregar produtos.");
@@ -20,7 +21,7 @@ export function useProducts() {
     }
 
     fetchProducts();
-  }, []);
+  }, [categoryId]);
 
   return { products, loading, error };
 }
