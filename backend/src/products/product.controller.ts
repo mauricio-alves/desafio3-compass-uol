@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from "@nestjs/common";
+import { Controller, Get, Param, ParseIntPipe, Query } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from "@nestjs/swagger";
 import { ProductService } from "./product.service";
 import { ProductPreviewDto } from "./dto/product-preview.dto";
@@ -44,7 +44,7 @@ export class ProductController {
     isArray: true,
   })
   @Get("category/:id")
-  async findByCategory(@Param("id") categoryId: number): Promise<ProductPreviewDto[]> {
+  async findByCategory(@Param("id", ParseIntPipe) categoryId: number): Promise<ProductPreviewDto[]> {
     const products = await this.productService.findByCategory(categoryId);
 
     return products.map(({ id, name, images, description, price, discount: hasDiscount, discountPercent, isNew: isProductNew }) => ({
