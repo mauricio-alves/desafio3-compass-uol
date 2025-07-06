@@ -1,0 +1,21 @@
+{
+  "imagesByCategory": {
+    "living": ["https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1502672023488-70e25813eb80?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80"],
+    "bedroom": ["https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1472220625704-91e1462799b2?auto=format&fit=crop&w=800&q=80"],
+    "dining": ["https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"]
+  },
+  "titlesAndDescriptionsByCategory": {
+    "living": {
+      "titles": ["Modern Sofa Set", "Elegant Coffee Table", "Comfort Recliner Chair", "Minimalist Bookshelf", "Stylish Floor Lamp", "Cozy Area Rug", "Wooden TV Stand", "Decorative Wall Art", "Contemporary Side Table", "Soft Throw Pillows"],
+      "descriptions": ["A stylish sofa set that enhances any living room ambiance.", "Coffee table crafted with premium materials and sleek design.", "Recliner chair with plush cushions for ultimate relaxation.", "Bookshelf with a minimalist design perfect for modern homes.", "Floor lamp providing warm and adjustable lighting.", "Area rug with soft texture and contemporary patterns.", "TV stand with ample storage and elegant wood finish.", "Wall art that adds character and charm to your space.", "Side table designed to complement your living room decor.", "Throw pillows that add comfort and color to any sofa."]
+    },
+    "bedroom": {
+      "titles": ["Luxury King Bed", "Compact Nightstand", "Soft Cotton Sheets", "Elegant Dresser", "Cozy Mattress Topper", "Modern Wardrobe", "Adjustable Reading Lamp", "Decorative Mirror", "Comfortable Armchair", "Warm Bedside Rug"],
+      "descriptions": ["King bed with plush upholstery and sturdy frame.", "Nightstand with drawers for convenient bedside storage.", "High-quality cotton sheets for a restful night's sleep.", "Dresser featuring multiple drawers with smooth finishes.", "Mattress topper that adds extra comfort and support.", "Spacious wardrobe with modern design and finishes.", "Reading lamp with adjustable brightness settings.", "Mirror with elegant frame to enhance your bedroom.", "Armchair designed for comfort and style.", "Soft bedside rug to keep your feet warm and cozy."]
+    },
+    "dining": {
+      "titles": ["Classic Dining Table", "Comfort Dining Chairs", "Glassware Set", "Elegant Table Runner", "Stylish Serving Tray", "Modern Bar Stools", "Cutlery Set", "Decorative Centerpiece", "Buffet Cabinet", "Placemats Set"],
+      "descriptions": ["Dining table crafted for memorable meals and gatherings.", "Chairs designed for comfort and elegance at your dining area.", "Set of glassware perfect for all occasions.", "Table runner that adds sophistication to your dining table.", "Serving tray with stylish design and practical use.", "Bar stools with modern look and sturdy build.", "Cutlery set made of premium stainless steel.", "Centerpiece to add charm and style to your table.", "Buffet cabinet for storing your dining essentials.", "Placemats set that protects your table and adds color."]
+    }
+  }
+}

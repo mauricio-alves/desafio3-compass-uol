@@ -22,5 +22,5 @@ class ProductSummaryDto {
   id: number;
 
   @ApiProperty({ example: "Smartphone XYZ", description: "Título do produto" })
-  title: string;
+  name: string;
 }

@@ -14,7 +14,7 @@ export class ProductService {
   private toDto(product: Product): ProductDto {
     return {
       id: product.id,
-      title: product.title,
+      name: product.name,
       price: Number(product.price),
       images: product.images,
       rating: product.rating,
@@ -29,12 +29,17 @@ export class ProductService {
       },
       categoryId: product.category.id,
       discount: product.discount,
+      discountPercent: product.discountPercent,
       isNew: product.isNew,
     };
   }
 
-  async findAll(filters: { categoryId?: number; discount?: boolean; isNew?: boolean }): Promise<ProductDto[]> {
+  async findAll(filters: { categoryId?: number; discount?: boolean; isNew?: boolean; orderBy?: string; order?: "asc" | "desc" }): Promise<ProductDto[]> {
     const query = this.productRepository.createQueryBuilder("product").leftJoinAndSelect("product.category", "category");
+
+    if (filters.orderBy && ["price", "rating", "reviewCount"].includes(filters.orderBy)) {
+      query.orderBy(`product.${filters.orderBy}`, filters.order?.toUpperCase() === "DESC" ? "DESC" : "ASC");
+    }
 
     if (filters.categoryId) {
       query.andWhere("product.categoryId = :categoryId", { categoryId: filters.categoryId });
