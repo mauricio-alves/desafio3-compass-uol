@@ -11,6 +11,9 @@ export function useProducts(categoryId?: string, filter?: FilterType) {
 
   useEffect(() => {
     async function fetchProducts() {
+      setLoading(true);
+      setError(null);
+      
       try {
         const baseUrl = "/products";
         const params: string[] = [];

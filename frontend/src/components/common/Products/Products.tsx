@@ -1,7 +1,7 @@
 import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 import { ProductCard } from "../ProductCard";
-import { ProductsProps } from "@/interfaces/ProductsProps ";
+import { ProductsProps } from "@/interfaces/ProductsProps";
 import ReactPaginate from "react-paginate";
 import { ProductLoadButtons } from "../ProductLoadButtons";
 
