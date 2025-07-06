@@ -4,8 +4,9 @@ import shareIcon from "@/assets/icons/share.svg";
 import compareIcon from "@/assets/icons/compare.svg";
 import heartIcon from "@/assets/icons/heart.svg";
 
-export function ProductCard({ id, title, description, price, images, discount, discountPercent, isNew }: ProductCardProps) {
-  const calculatedOldPrice = discount ? price / (1 - (discountPercent ?? 10) / 100) : null;
+export function ProductCard({ id, name, description, price, images, discount, discountPercent, isNew }: ProductCardProps) {
+  const calculatedOldPrice = discount && discountPercent ? parseFloat((price / (1 - discountPercent / 100)).toFixed(2)) : null;
+  const truncatedTitle = name.length > 16 ? name.slice(0, 16) + "..." : name;
   const truncatedDescription = description.length > 25 ? description.slice(0, 25) + "..." : description;
 
   const overlayActions = [
@@ -18,12 +19,12 @@ export function ProductCard({ id, title, description, price, images, discount, d
     <div className="relative group transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
       <div className="bg-white shadow-md overflow-hidden transition duration-300 group-hover:opacity-70">
         <div className="relative w-full h-76">
-          <img src={images[0]} alt={title} className="w-full h-full object-cover" />
-          {discount && <span className="absolute top-6 right-6 bg-[var(--color-red)] text-white text-normal px-2 py-3 rounded-full z-10 font-poppins">-{discountPercent ?? 10}%</span>}
+          <img src={images[0]} alt={name} className="w-full h-full object-cover" />
+          {discount && discountPercent !== undefined && <span className="absolute top-6 right-6 bg-[var(--color-red)] text-white text-normal px-1 py-3 rounded-full z-10 font-poppins">-{discountPercent}%</span>}
           {isNew && !discount && <span className="absolute top-6 right-6 bg-[var(--color-green)] text-white text-normal px-2 py-3 rounded-full z-10 font-poppins">New</span>}
         </div>
         <div className="p-4 pt-3 bg-[var(--color-gray)] font-poppins">
-          <h3 className="text-2xl font-semibold pb-2">{title}</h3>
+          <h3 className="text-2xl font-semibold pb-2">{truncatedTitle}</h3>
           <p className="text-sm text-gray-500 pb-3">{truncatedDescription}</p>
           <div className="flex items-center gap-5 mb-4">
             <span className="text-lg font-bold text-gray-900">Rp {price.toLocaleString("id-ID")}</span>
