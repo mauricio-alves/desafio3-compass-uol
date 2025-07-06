@@ -54,7 +54,7 @@ export function ProductList() {
             <input type="number" value={itemsToShow} onChange={handleInputChange} className="w-14 px-2 py-2 border border-gray-300 rounded bg-white text-center text-gray-500" min={1} />
           </label>
           <label className="flex items-center gap-2">
-            <span className="text-black font-medium">Short by</span>
+            <span className="text-black font-medium">Sort by</span>
             <select className="px-3 py-2 border border-gray-300 rounded bg-white text-black" value={filter} onChange={handleSelectChange}>
               <option value="default">Default</option>
               <option value="priceLow">Price: Low to High</option>

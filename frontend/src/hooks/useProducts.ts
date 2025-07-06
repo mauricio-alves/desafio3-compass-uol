@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { api } from "@/services/api";
 import { Product } from "@/interfaces/Product";
 
-export function useProducts(categoryId?: string, filter?: string) {
+type FilterType = "default" | "discount" | "isNew" | "priceLow" | "priceHigh";
+
+export function useProducts(categoryId?: string, filter?: FilterType) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

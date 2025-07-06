@@ -14,8 +14,8 @@ const icons = [
 const links = [
   { label: "Home", href: "/" },
   { label: "Shop", href: "/category/1" },
-  { label: "About", href: "/" },
-  { label: "Contact", href: "/" },
+  { label: "About", href: "#" },
+  { label: "Contact", href: "#" },
 ];
 
 export function Header() {
