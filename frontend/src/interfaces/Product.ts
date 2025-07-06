@@ -1,11 +1,18 @@
+import { Category } from "./Category";
+
 export interface Product {
   id: number;
   name: string;
-  description: string;
   price: number;
-  oldPrice?: number;
   images: string[];
+  rating: number;
+  reviewCount: number;
+  description: string;
+  sizes: string[];
+  colors: string[];
+  oldPrice?: number;
   isNew: boolean;
   discount: boolean;
   discountPercent?: number;
+  category: Category;
 }
