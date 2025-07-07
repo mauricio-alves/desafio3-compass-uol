@@ -12,6 +12,7 @@ import { ProductRating } from "../ProductRating";
 import { SizeSelector } from "../SizeSelector";
 import { ColorSelector } from "../ColorSelector";
 import { ProductActions } from "../ProductActions";
+import { Products } from "@/components/common/Products";
 
 export function ProductDetails() {
   const { id } = useParams();
@@ -73,6 +74,9 @@ export function ProductDetails() {
         </div>
       </section>
       <DescriptionTabs description={product.description} />
+      <div className="mb-10">
+        <Products initialCount={4} title="Related Products" />
+      </div>
     </>
   );
 }
