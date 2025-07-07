@@ -8,6 +8,7 @@ export interface Product {
   rating: number;
   reviewCount: number;
   description: string;
+  fullDescription: string[];
   sizes: string[];
   colors: string[];
   oldPrice?: number;
