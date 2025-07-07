@@ -20,6 +20,7 @@ export class ProductService {
       rating: product.rating,
       reviewCount: product.reviewCount,
       description: product.description,
+      fullDescription: product.fullDescription,
       sizes: product.sizes,
       colors: product.colors,
       category: {

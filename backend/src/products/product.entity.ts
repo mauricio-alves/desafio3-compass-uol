@@ -24,6 +24,9 @@ export class Product {
   @Column("text")
   description: string;
 
+  @Column("text")
+  fullDescription: string[];
+
   @Column("simple-array")
   sizes: string[];
 
