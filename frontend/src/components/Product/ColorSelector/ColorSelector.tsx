@@ -1,4 +1,6 @@
-export function ColorSelector({ colors, selectedColor, onSelect }: { colors: string[]; selectedColor: string | null; onSelect: (color: string) => void }) {
+import { ColorSelectorProps } from "@/interfaces/ColorSelectorProps";
+
+export function ColorSelector({ colors, selectedColor, onSelect }: ColorSelectorProps) {
   return (
     <div className="space-y-1 py-2">
       <p className="text-[#9F9F9F]">Color</p>

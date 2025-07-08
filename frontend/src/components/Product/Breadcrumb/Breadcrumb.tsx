@@ -1,6 +1,7 @@
 import arrow from "@/assets/icons/arrow-right.svg";
+import { BreadcrumbProps } from "@/interfaces/BreadcrumbProps";
 
-export function Breadcrumb({ productName }: { productName: string }) {
+export function Breadcrumb({ productName }: BreadcrumbProps) {
   return (
     <div className="bg-[var(--color-orange-light)] px-24 py-8 flex items-center font-poppins gap-2">
       <span className="text-gray-300">Home</span>

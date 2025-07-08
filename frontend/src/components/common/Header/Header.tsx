@@ -13,7 +13,7 @@ const icons = [
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/category/1" },
+  { label: "Shop", href: "/category/all" },
   { label: "About", href: "#" },
   { label: "Contact", href: "#" },
 ];

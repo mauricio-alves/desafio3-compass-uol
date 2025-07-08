@@ -1,4 +1,6 @@
-export function ProductGallery({ images, selectedImage, onSelect }: { images: string[]; selectedImage: string; onSelect: (img: string) => void }) {
+import { ProductGalleryProps } from "@/interfaces/ProductGalleryProps";
+
+export function ProductGallery({ images, selectedImage, onSelect }: ProductGalleryProps) {
   return (
     <div className="flex gap-8">
       <div className="flex flex-col gap-6">

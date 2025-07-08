@@ -1,4 +1,6 @@
-export function SizeSelector({ sizes, selectedSize, onSelect }: { sizes: string[]; selectedSize: string | null; onSelect: (size: string) => void }) {
+import { SizeSelectorProps } from "@/interfaces/SizeSelectorProps";
+
+export function SizeSelector({ sizes, selectedSize, onSelect }: SizeSelectorProps) {
   return (
     <div className="space-y-1 py-2">
       <p className="text-[#9F9F9F]">Size</p>

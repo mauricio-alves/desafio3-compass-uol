@@ -62,7 +62,7 @@ export function ProductDetails() {
         <ProductGallery images={product.images} selectedImage={selectedImage ?? product.images[0]} onSelect={setSelectedImage} />
         <div className="flex-1 space-y-4 font-poppins">
           <h2 className="text-heading-1">{product.name}</h2>
-          <p className="text-2xl text-[#9F9F9F]">Rs. {product.price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+          <p className="text-2xl text-[#9F9F9F]">Rs. {product.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</p>
           <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
           <div>
             <p className="text-gray-700 py-4 pr-40">{product.description}</p>

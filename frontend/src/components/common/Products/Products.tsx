@@ -3,10 +3,10 @@ import { useState } from "react";
 import { ProductCard } from "../ProductCard";
 import { ProductsProps } from "@/interfaces/ProductsProps";
 import ReactPaginate from "react-paginate";
-import { ProductLoadButtons } from "../ProductLoadButtons";
+import { ShowMore } from "../ShowMore";
 
 export function Products({ initialCount = 8, categoryId, title, filter }: ProductsProps) {
-  const [visibleCount, setVisibleCount] = useState(initialCount);
+  const [visibleCount] = useState(initialCount);
   const { products, loading, error } = useProducts(categoryId, filter);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = initialCount;
@@ -15,14 +15,6 @@ export function Products({ initialCount = 8, categoryId, title, filter }: Produc
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
-  };
-
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + initialCount);
-  };
-
-  const handleShowLess = () => {
-    setVisibleCount((prev) => Math.max(initialCount, prev - initialCount));
   };
 
   const visibleProducts = products.slice(0, visibleCount);
@@ -47,7 +39,7 @@ export function Products({ initialCount = 8, categoryId, title, filter }: Produc
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
-      {showButtons && <ProductLoadButtons visibleCount={visibleCount} total={products.length} initialCount={initialCount} onShowMore={handleShowMore} onShowLess={handleShowLess} />}
+      {showButtons && <ShowMore />}
       {showPagination && (
         <div className="mt-10 mb-8 flex justify-center">
           <ReactPaginate pageCount={Math.ceil(products.length / itemsPerPage)} pageRangeDisplayed={3} marginPagesDisplayed={1} onPageChange={handlePageChange} containerClassName="flex items-center justify-center gap-10 mt-8 font-poppins text-large" pageClassName="rounded-md bg-[var(--color-orange-light)] text-black px-[26px] py-4 cursor-pointer hover:bg-[#e9e1d9] transition" pageLinkClassName="w-full h-full text-center" activeClassName="bg-[var(--color-yellow)] text-white" previousClassName="rounded-md bg-[var(--color-orange-light)] text-black px-[30px] py-4 cursor-pointer hover:bg-[#e9e1d9] transition" nextClassName="rounded-md bg-[var(--color-orange-light)] text-black px-[30px] py-4 cursor-pointer hover:bg-[#e9e1d9] transition" previousLinkClassName="w-full h-full text-center" nextLinkClassName="w-full h-full text-center" disabledClassName="opacity-0 pointer-events-none" previousLabel={"←"} nextLabel={"Next"} breakLabel={"..."} breakClassName="text-gray-500 px-2" />

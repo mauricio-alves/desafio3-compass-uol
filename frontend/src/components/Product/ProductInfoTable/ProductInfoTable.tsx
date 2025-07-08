@@ -1,4 +1,6 @@
-export function ProductInfoTable({ productId, categoryName, socialIcons }: { productId: number; categoryName: string; socialIcons: { icon: string; alt: string; href: string }[] }) {
+import { ProductInfoTableProps } from "@/interfaces/ProductInfoTableProps";
+
+export function ProductInfoTable({ productId, categoryName, socialIcons }: ProductInfoTableProps) {
   return (
     <table className="text-normal mt-10 text-[#9F9F9F] border-spacing-y-4 border-separate">
       <tbody>

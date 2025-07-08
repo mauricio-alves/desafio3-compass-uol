@@ -1,6 +1,7 @@
+import { ProductRatingProps } from "@/interfaces/ProductRatingProps";
 import StarRatings from "react-star-ratings";
 
-export function ProductRating({ rating, reviewCount }: { rating: number; reviewCount: number }) {
+export function ProductRating({ rating, reviewCount }: ProductRatingProps) {
   return (
     <div className="flex items-center gap-2">
       <StarRatings rating={rating} starRatedColor="#FFC700" numberOfStars={5} starDimension="20px" starSpacing="2px" name="rating" />
