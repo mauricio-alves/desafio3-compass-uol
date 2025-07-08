@@ -35,7 +35,7 @@ async function createCategory(name: string, image: string) {
   return categoryRepo.save(category);
 }
 
-async function createProduct(category: Category, name: string, index: number) {
+async function createProduct(category: Category, name: string) {
   const productRepo = AppDataSource.getRepository(Product);
   const chance = Math.random();
 
@@ -86,7 +86,7 @@ async function seed() {
       const category = await createCategory(name, categoryImage);
 
       for (let i = 1; i <= 45; i++) {
-        await createProduct(category, name, i);
+        await createProduct(category, name);
       }
     }
 
