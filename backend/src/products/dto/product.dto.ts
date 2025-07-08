@@ -28,14 +28,21 @@ export class ProductDto {
   description: string;
 
   @ApiProperty({
-    example: ["P", "M", "G"],
+    example: `Esta camiseta foi criada com tecidos de alta qualidade. 
+Possui costura reforçada, gola canelada e ótimo caimento. Ideal para uso diário ou casual.`,
+    description: "Descrição completa do produto, com mais detalhes e parágrafos",
+  })
+  fullDescription: string[];
+
+  @ApiProperty({
+    example: ["L", "XL", "XS"],
     description: "Tamanhos disponíveis",
     type: [String],
   })
   sizes: string[];
 
   @ApiProperty({
-    example: ["vermelho", "azul", "preto"],
+    example: ["roxo", "preto", "amarelo"],
     description: "Cores disponíveis",
     type: [String],
   })

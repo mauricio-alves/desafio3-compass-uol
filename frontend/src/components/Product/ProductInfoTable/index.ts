@@ -1,0 +1,1 @@
+export { ProductInfoTable } from "./ProductInfoTable";

@@ -12,7 +12,7 @@ export class Product {
   @Column("decimal")
   price: number;
 
-  @Column("simple-array")
+  @Column("text", { array: true })
   images: string[];
 
   @Column("float")
@@ -24,10 +24,13 @@ export class Product {
   @Column("text")
   description: string;
 
-  @Column("simple-array")
+  @Column("text", { array: true })
+  fullDescription: string[];
+
+  @Column("text", { array: true })
   sizes: string[];
 
-  @Column("simple-array")
+  @Column("text", { array: true })
   colors: string[];
 
   @Column({ default: false })
