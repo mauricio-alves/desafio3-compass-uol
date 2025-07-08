@@ -2,7 +2,7 @@ import { SizeSelectorProps } from "@/interfaces/SizeSelectorProps";
 
 export function SizeSelector({ sizes, selectedSize, onSelect }: SizeSelectorProps) {
   return (
-    <div className="space-y-1 py-2">
+    <div className="space-y-1">
       <p className="text-[#9F9F9F]">Size</p>
       <div className="flex gap-4">
         {sizes.map((size) => (

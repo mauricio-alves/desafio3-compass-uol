@@ -6,7 +6,6 @@ import ReactPaginate from "react-paginate";
 import { ShowMore } from "../ShowMore";
 
 export function Products({ initialCount = 8, categoryId, title, filter }: ProductsProps) {
-  const [visibleCount] = useState(initialCount);
   const { products, loading, error } = useProducts(categoryId, filter);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = initialCount;
@@ -17,7 +16,7 @@ export function Products({ initialCount = 8, categoryId, title, filter }: Produc
     setCurrentPage(selectedItem.selected);
   };
 
-  const visibleProducts = products.slice(0, visibleCount);
+  const visibleProducts = products.slice(0, initialCount);
   const showPagination = !!categoryId;
   const showButtons = !categoryId;
 

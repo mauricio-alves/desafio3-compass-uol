@@ -58,14 +58,14 @@ export function ProductDetails() {
   ) : (
     <>
       <Breadcrumb productName={product.name} />
-      <section className="flex flex-col md:flex-row gap-26 py-10 px-24 mb-6">
+      <section className="flex flex-col md:flex-row gap-26 py-10 px-24 mb-6 border-b border-gray-300">
         <ProductGallery images={product.images} selectedImage={selectedImage ?? product.images[0]} onSelect={setSelectedImage} />
         <div className="flex-1 space-y-4 font-poppins">
           <h2 className="text-heading-1">{product.name}</h2>
           <p className="text-2xl text-[#9F9F9F]">Rs. {product.price.toLocaleString("en-US", { minimumFractionDigits: 2 })}</p>
           <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
           <div>
-            <p className="text-gray-700 py-4 pr-40">{product.description}</p>
+            <p className="text-gray-700 pr-40">{product.description}</p>
           </div>
           <SizeSelector sizes={product.sizes} selectedSize={selectedSize} onSelect={setSelectedSize} />
           <ColorSelector colors={product.colors} selectedColor={selectedColor} onSelect={setSelectedColor} />
