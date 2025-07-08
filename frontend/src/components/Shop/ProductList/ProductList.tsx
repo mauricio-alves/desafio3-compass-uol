@@ -6,18 +6,20 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useProducts } from "@/hooks/useProducts";
 import arrow from "@/assets/icons/arrow-right.svg";
+import { FilterType, SortType } from "@/types/productFilters";
 
 export function ProductList() {
   const { id } = useParams();
   const [itemsToShow, setItemsToShow] = useState(16);
-  const [filter, setFilter] = useState<"default" | "discount" | "isNew" | "priceLow" | "priceHigh">("default");
+  const [filter, setFilter] = useState<FilterType>("default");
+  const [sort, setSort] = useState<SortType>("default");
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
 
-  const { products } = useProducts(id, filter);
+  const { products } = useProducts(id, filter, sort);
   const totalCount = products.length;
   const showingEnd = Math.min(itemsToShow, totalCount);
 
-  const filterOptions = [
+  const filterOptions: { label: string; value: FilterType }[] = [
     { label: "Default", value: "default" },
     { label: "Discount", value: "discount" },
     { label: "New", value: "isNew" },
@@ -30,9 +32,13 @@ export function ProductList() {
     }
   };
 
-  const handleFilterChange = (value: typeof filter) => {
+  const handleFilterChange = (value: FilterType) => {
     setFilter(value);
     setIsFilterDropdownOpen(false);
+  };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSort(e.target.value as SortType);
   };
 
   return (
@@ -47,7 +53,7 @@ export function ProductList() {
           {isFilterDropdownOpen && (
             <div className="absolute top-12 left-0 bg-white border border-gray-300 rounded shadow-md z-10 w-40 py-2">
               {filterOptions.map(({ label, value }) => (
-                <button key={value} onClick={() => handleFilterChange(value as typeof filter)} className="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <button key={value} onClick={() => handleFilterChange(value)} className={`w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer ${filter === value ? "font-bold bg-gray-200" : ""}`} role="option" aria-selected={filter === value}>
                   {label}
                 </button>
               ))}
@@ -73,7 +79,7 @@ export function ProductList() {
           </label>
           <label className="flex items-center gap-2">
             <span className="text-black font-medium">Sort by</span>
-            <select className="px-3 py-2 border border-gray-300 rounded bg-white text-black cursor-pointer" value={filter} onChange={(e) => handleFilterChange(e.target.value as typeof filter)}>
+            <select className="px-3 py-2 border border-gray-300 rounded bg-white text-black cursor-pointer" value={sort} onChange={handleSortChange}>
               <option value="default">Default</option>
               <option value="priceLow">Price: Low to High</option>
               <option value="priceHigh">Price: High to Low</option>
@@ -82,7 +88,7 @@ export function ProductList() {
         </div>
       </section>
       <section>
-        <Products initialCount={itemsToShow} categoryId={id} filter={filter} />
+        <Products initialCount={itemsToShow} categoryId={id} filter={filter} sort={sort} />
       </section>
     </>
   );

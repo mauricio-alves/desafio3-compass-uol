@@ -5,8 +5,8 @@ import { ProductsProps } from "@/interfaces/ProductsProps";
 import ReactPaginate from "react-paginate";
 import { ShowMore } from "../ShowMore";
 
-export function Products({ initialCount = 8, categoryId, title, filter }: ProductsProps) {
-  const { products, loading, error } = useProducts(categoryId, filter);
+export function Products({ initialCount = 8, categoryId, title, filter, sort }: ProductsProps) {
+  const { products, loading, error } = useProducts(categoryId, filter, sort);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = initialCount;
   const offset = currentPage * itemsPerPage;
