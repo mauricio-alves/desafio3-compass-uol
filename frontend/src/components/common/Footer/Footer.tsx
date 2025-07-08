@@ -3,23 +3,24 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { newsletterSchema } from "@/schemas/newsletterSchema";
 import { NewsletterFormData } from "@/interfaces/NewsletterFormData";
+import { Link } from "react-router-dom";
 
 const linkGroups: LinkGroup[] = [
   {
     title: "Links",
     links: [
-      { label: "Home", href: "#" },
-      { label: "Shop", href: "#" },
-      { label: "About", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Home", href: "/" },
+      { label: "Shop", href: "/category/all" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Help",
     links: [
-      { label: "Payment Options", href: "#" },
-      { label: "Returns", href: "#" },
-      { label: "Privacy Policies", href: "#" },
+      { label: "Payment Options", href: "/payment" },
+      { label: "Returns", href: "/returns" },
+      { label: "Privacy Policies", href: "/policies" },
     ],
   },
 ];
@@ -52,13 +53,13 @@ export function Footer() {
         <div className="flex gap-38">
           {linkGroups.map(({ title, links }) => (
             <div key={title}>
-              <h3 className="text-text-[var(--color-dark-gray) mb-4 text-normal">{title}</h3>
+              <h3 className="text-[var(--color-dark-gray)] mb-4 text-normal">{title}</h3>
               <ul className="space-y-2 flex flex-col gap-10 mt-12">
                 {links.map(({ label, href }) => (
                   <li key={label}>
-                    <a href={href} className="text-black hover:underline text-normal">
+                    <Link to={href} className="text-black hover:underline text-normal">
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -66,10 +67,10 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <h3 className="text-text-[var(--color-dark-gray) mb-12 text-normal">Newsletter</h3>
+          <h3 className="text-[var(--color-dark-gray)] mb-12 text-normal">Newsletter</h3>
           <form onSubmit={handleSubmit(handleSubscribe)} noValidate>
             <div className="flex gap-3">
-              <input type="email" placeholder="Enter Your Email Address" {...register("email")} className="flex-1 outline-none max-w-[200px] bg-transparent text-black placeholder:text-text-[var(--color-dark-gray) py-1 text-sm border-b border-black" />
+              <input type="email" placeholder="Enter Your Email Address" {...register("email")} className="flex-1 outline-none max-w-[200px] bg-transparent text-black placeholder:text-[var(--color-dark-gray)] py-1 text-sm border-b border-black" />
               <button type="submit" className="text-black font-semibold uppercase cursor-pointer tracking-wide hover:underline text-sm border-b border-black">
                 Subscribe
               </button>

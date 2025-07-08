@@ -2,6 +2,7 @@ import { Controller, Get, Param, ParseIntPipe, Query } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from "@nestjs/swagger";
 import { ProductService } from "./product.service";
 import { ProductPreviewDto } from "./dto/product-preview.dto";
+import { ProductDto } from "./dto/product.dto";
 
 @ApiTags("products")
 @Controller("products")
@@ -57,5 +58,17 @@ export class ProductController {
       discountPercent,
       isNew: isProductNew,
     }));
+  }
+
+  @ApiOperation({ summary: "Detalhes de um produto por ID" })
+  @ApiResponse({
+    status: 200,
+    description: "Detalhes de um produto",
+    type: ProductDto,
+  })
+  @ApiResponse({ status: 404, description: "Produto não encontrado" })
+  @Get(":id")
+  async findOne(@Param("id", ParseIntPipe) id: number): Promise<ProductDto> {
+    return this.productService.findOne(id);
   }
 }

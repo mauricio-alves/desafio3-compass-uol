@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { api } from "@/services/api";
 import { Product } from "@/interfaces/Product";
+import { FilterType, SortType } from "@/types/productFilters";
 
-type FilterType = "default" | "discount" | "isNew" | "priceLow" | "priceHigh";
-
-export function useProducts(categoryId?: string, filter?: FilterType) {
+export function useProducts(categoryId?: string, filter?: FilterType, sort?: SortType) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -13,7 +12,7 @@ export function useProducts(categoryId?: string, filter?: FilterType) {
     async function fetchProducts() {
       setLoading(true);
       setError(null);
-      
+
       try {
         const baseUrl = "/products";
         const params: string[] = [];
@@ -22,15 +21,18 @@ export function useProducts(categoryId?: string, filter?: FilterType) {
           params.push(`categoryId=${categoryId}`);
         }
 
-        const filterMap: Record<string, string> = {
-          discount: "discount=true",
-          isNew: "isNew=true",
-          priceLow: "orderBy=price&order=asc",
-          priceHigh: "orderBy=price&order=desc",
-        };
+        if (filter === "discount") {
+          params.push("discount=true");
+        } else if (filter === "isNew") {
+          params.push("isNew=true");
+        }
 
-        if (filter && filter !== "default" && filterMap[filter]) {
-          params.push(filterMap[filter]);
+        if (sort === "priceLow") {
+          params.push("orderBy=price");
+          params.push("order=asc");
+        } else if (sort === "priceHigh") {
+          params.push("orderBy=price");
+          params.push("order=desc");
         }
 
         const queryString = params.length > 0 ? `?${params.join("&")}` : "";
@@ -46,7 +48,7 @@ export function useProducts(categoryId?: string, filter?: FilterType) {
     }
 
     fetchProducts();
-  }, [categoryId, filter]);
+  }, [categoryId, filter, sort]);
 
   return { products, loading, error };
 }

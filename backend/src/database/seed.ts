@@ -52,17 +52,18 @@ async function createProduct(category: Category, name: string, index: number) {
 
   const categoryKey = name.toLowerCase() as keyof typeof imagesByCategory;
   const images = getOrderedImages(categoryKey);
-  const { titles, descriptions } = titlesAndDescriptionsByCategory[categoryKey];
+  const { titles, descriptions, fullDescriptions } = titlesAndDescriptionsByCategory[categoryKey];
 
   const product = productRepo.create({
     name: getRandomFromArray(titles),
     description: getRandomFromArray(descriptions),
-    price: parseFloat((Math.random() * 1000 + 100).toFixed(2)),
+    fullDescription: fullDescriptions,
+    price: parseFloat((Math.random() * 999000 + 1000).toFixed(2)),
     images,
     rating: parseFloat((Math.random() * 2 + 3).toFixed(1)),
     reviewCount: Math.floor(Math.random() * 100 + 1),
-    sizes: ["L", "M", "S"],
-    colors: ["#000000", "#ffffff", "#927653"],
+    sizes: ["L", "XL", "XS"],
+    colors: ["#816DFA", "#000000", "#B88E2F"],
     category,
     discount,
     discountPercent,
