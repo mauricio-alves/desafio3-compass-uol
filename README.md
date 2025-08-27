@@ -47,3 +47,7 @@ O projeto atende aos critérios de aceite definidos pelos tutores, disponíveis 
 - [React Hook Form](https://react-hook-form.com/);
 - [React Paginate](https://www.npmjs.com/package/react-paginate);
 - [React Star Ratings](https://www.npmjs.com/package/react-star-ratings).
+
+## Demonstração
+- [YouTube](https://youtu.be/i21cyxTcEcY).
+
